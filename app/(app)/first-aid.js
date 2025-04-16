@@ -1,28 +1,18 @@
 import {
   View,
-  Text,
-  TouchableOpacity,
-  Platform,
   ScrollView,
 } from "react-native";
 import React, { useEffect } from "react";
-import { router, useGlobalSearchParams, useNavigation } from "expo-router";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Entypo, Ionicons } from "@expo/vector-icons";
-import { Pressable } from "react-native";
-import Colors from "../../constants/Colors";
+import {  useGlobalSearchParams, useNavigation } from "expo-router";
 import { StyleSheet } from "react-native";
 import RNText from "../../components/RNText";
-import { heightPercentageToDP } from "react-native-responsive-screen";
-import HomeHeader from "../../components/HomeHeader";
-import { ECO_IMG_URL, POINTS_IMG_URL } from "../../constants/constants";
+import { heightPercentageToDP, widthPercentageToDP } from "react-native-responsive-screen";
 import { Image } from "expo-image";
 import { List, useTheme } from "react-native-paper";
-const ios = Platform.OS === "ios";
+import YoutubePlayer from "react-native-youtube-iframe";
 
 const FirstAID = () => {
-  const { title, image, steps, description } = useGlobalSearchParams();
-  const { top } = useSafeAreaInsets();
+  const { title, image, steps, description,youtubeLink } = useGlobalSearchParams();
   const { colors } = useTheme();
 
   const navigation = useNavigation();
@@ -118,6 +108,34 @@ const FirstAID = () => {
           ))}
         </List.Section>
       </View>
+      <View
+      style={{
+        height: 260,
+        width: widthPercentageToDP(90),
+        alignItems: "center",
+        justifyContent: "center",
+        marginLeft: 10,
+ 
+      }}
+    >
+      <View
+        style={{
+          width: "100%",
+          height: "80%",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 10,
+          overflow: "hidden",
+        }}
+      >
+        <YoutubePlayer
+          height={"100%"}
+          width={"100%"}
+          play={false}
+          videoId={youtubeLink}
+        />
+      </View>
+    </View>
     </ScrollView>
   );
 };

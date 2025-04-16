@@ -1,4 +1,10 @@
-import { Alert, ScrollView, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 import HeartRateChart from "../../components/Health/Heart";
 import * as AuthSession from "expo-auth-session";
@@ -7,7 +13,13 @@ import SleepTrackingChart from "../../components/Health/Sleep";
 import { heightPercentageToDP } from "react-native-responsive-screen";
 import {
   ActivityIndicator,
+  Button,
+  Card,
+  Modal,
+  Paragraph,
+  Portal,
   SegmentedButtons,
+  Title,
   useTheme,
 } from "react-native-paper";
 import StepsTracking from "../../components/Health/steps";
@@ -17,12 +29,8 @@ import * as Linking from "expo-linking";
 import { useFocusEffect } from "expo-router";
 import dayjs from "dayjs";
 import axios from "axios";
-
-// const config = {
-//   clientId: "23Q45B", // Replace with your Fitbit Client ID
-//   scopes: ["heartrate", "activity", "profile", "sleep"],
-//   clientSecret: "8d5e6e958053897f0b14a5e1980992a4",
-// };
+import { Ionicons } from "@expo/vector-icons";
+import { getHealthInsightsFromGemini } from "../../constants/api";
 
 const config = {
   clientId: "23QCCS", // Replace with your Fitbit Client ID
@@ -36,9 +44,6 @@ const config = {
 //   return "medilink://oauthredirect";
 // };
 const redirectUri = Linking.createURL("oauthredirect");
-
-// const redirectUri = getRedirectUri();
-// console.log("Redirect URI:", redirectUri);
 
 const Health = () => {
   const { colors } = useTheme();
@@ -87,7 +92,6 @@ const Health = () => {
     weeklyStats
   );
 
-  // clear token from storage
   const clearToken = async () => {
     try {
       await AsyncStorage.removeItem("fitbit_token");
@@ -111,7 +115,6 @@ const Health = () => {
     }
   };
 
-  /// based on the range fetch weeklyStats
   useEffect(() => {
     if (authToken) {
       console.log(
@@ -218,7 +221,6 @@ const Health = () => {
     if (response?.type === "success") {
       const authCode = response.params.code;
       console.log("Authorization Code:", authCode);
-      // Exchange this code for an access token
       exchangeCodeForToken(authCode);
     }
   }, [response]);
@@ -275,8 +277,8 @@ const Health = () => {
       const token = await AsyncStorage.getItem("fitbit_token");
       if (!token) throw new Error("No Fitbit token found");
 
-      const yesterday = dayjs().subtract(1, "day").format("YYYY-MM-DD");
       const today = dayjs().format("YYYY-MM-DD");
+      // const today = dayjs().subtract(2, "day").format("YYYY-MM-DD");
       const headers = { Authorization: `Bearer ${token}` };
 
       const safeGet = async (url) => {
@@ -314,7 +316,7 @@ const Health = () => {
 
       // Sleep
       const sleepData = await safeGet(
-        `https://api.fitbit.com/1.2/user/-/sleep/date/${yesterday}.json`
+        `https://api.fitbit.com/1.2/user/-/sleep/date/${today}.json`
       );
       const stages = sleepData?.summary?.stages || {};
       const sleepMinutes = sleepData?.summary?.totalMinutesAsleep || 0;
@@ -498,6 +500,24 @@ const Health = () => {
       setLoading(false);
     }
   };
+
+  const [modalLoading, setModalLoading] = useState(false);
+  const [visible, setVisible] = React.useState(false);
+  const [aiData, setAIData] = useState(null);
+
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+  const askAI = async () => {
+    console.log("LOadingggg");
+
+    setModalLoading(true);
+    const data = await getHealthInsightsFromGemini(dailyStats);
+    setAIData(data);
+    setModalLoading(false);
+  };
+
+
+  const containerStyle = { backgroundColor: "#18191F", padding: 8 };
   return (
     <View
       style={{
@@ -534,6 +554,22 @@ const Health = () => {
             </View>
           ) : (
             <>
+              <Ionicons
+                name="sparkles"
+                size={24}
+                color={colors.primary}
+                style={{
+                  position: "absolute",
+                  top: -50,
+                  right: 16,
+                  zIndex: 1,
+                  backgroundColor: colors.card,
+                  borderRadius: 4,
+                  padding: 8,
+                }}
+                onPress={showModal}
+              />
+
               <SegmentedButtons
                 value={range}
                 onValueChange={setRange}
@@ -691,8 +727,156 @@ const Health = () => {
           </TouchableOpacity>
         </View>
       )}
+
+      <Portal>
+        <Modal
+          visible={visible}
+          onDismiss={hideModal}
+          contentContainerStyle={containerStyle}
+        >
+          <Ionicons
+            name="close"
+            size={24}
+            color={colors.red}
+            style={{
+              position: "absolute",
+              top: 10,
+              right: 16,
+              zIndex: 1,
+              backgroundColor: colors.card,
+              borderRadius: 4,
+              padding: 8,
+            }}
+            onPress={hideModal}
+          />
+          {aiData !== null ? (
+            <ScrollView>
+              <Card style={styles.card}>
+                <Card.Content>
+                  <Title style={styles.title}>📊 Summary</Title>
+                  <Paragraph
+                    style={{
+                      fontFamily: "M-Medium",
+                      fontSize: 14,
+                    }}
+                  >
+                    {aiData?.summary}
+                  </Paragraph>
+                </Card.Content>
+              </Card>
+
+              {/* Insights */}
+              <Card style={styles.card}>
+                <Card.Content>
+                  <Title style={styles.title}>💡 Daily Insights</Title>
+                  {Object.entries(aiData?.insights).map(([key, value]) => (
+                    <View key={key} style={styles.insight}>
+                      <RNText style={styles.insightTitle}>
+                        {key.toUpperCase()}
+                      </RNText>
+                      <Paragraph
+                        style={{
+                          fontFamily: "M-Medium",
+                          fontSize: 14,
+                        }}
+                      >
+                        {value}
+                      </Paragraph>
+                    </View>
+                  ))}
+                </Card.Content>
+              </Card>
+
+              {/* Suggestions */}
+              <Card style={styles.card}>
+                <Card.Content>
+                  <Title style={styles.title}>✅ Suggestions</Title>
+                  {aiData?.suggestions.map((tip, index) => (
+                    <Paragraph
+                      key={index}
+                      style={{
+                        fontFamily: "M-Medium",
+                        fontSize: 14,
+                      }}
+                    >
+                      {tip}
+                    </Paragraph>
+                  ))}
+                </Card.Content>
+              </Card>
+            </ScrollView>
+          ) : (
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                padding: 16,
+                gap: 20,
+                height: heightPercentageToDP(100),
+                width: "100%",
+                alignSelf: "center",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {modalLoading ? (
+                <>
+                  <ActivityIndicator
+                    size="large"
+                    color={colors.primary}
+                    style={{ marginTop: 20 }}
+                  />
+                  <RNText font={"M-Bold"} style={{ color: colors.text }}>
+                    Generating Insights... Please wait.
+                  </RNText>
+                </>
+              ) : (
+                <Button
+                  mode="contained"
+                  onPress={askAI}
+                  loading={modalLoading}
+                  style={{
+                    backgroundColor: colors.primary,
+                    marginTop: 16,
+                    borderRadius: 8,
+                  }}
+                  textColor="#fff"
+                  labelStyle={{ fontFamily: "M-Bold", fontSize: 16 }}
+                >
+                  Ask AI for Insights
+                </Button>
+              )}
+            </View>
+          )}
+        </Modal>
+      </Portal>
     </View>
   );
 };
 
 export default Health;
+const styles = StyleSheet.create({
+  card: {
+    marginBottom: 16,
+    borderRadius: 10,
+    elevation: 3,
+  },
+  title: {
+    marginBottom: 10,
+    fontFamily: "M-Bold",
+    fontSize: 18,
+    color: "#fff",
+  },
+  insight: {
+    marginBottom: 12,
+  },
+  insightTitle: {
+    fontSize: 14,
+    color: "#fff",
+    fontFamily: "M-Bold",
+  },
+  insightText: {
+    fontSize: 14,
+    color: "#fff",
+  },
+});

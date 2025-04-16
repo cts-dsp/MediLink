@@ -1,6 +1,6 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import React, { useCallback } from "react";
-import { Button, useTheme } from "react-native-paper";
+import { useTheme } from "react-native-paper";
 import { useFocusEffect, useRouter } from "expo-router";
 import { Image } from "expo-image";
 import RNText from "../../components/RNText";
@@ -10,7 +10,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const Symptoms = () => {
   const router = useRouter();
   const { colors } = useTheme();
-  // check if users has any conversation history
   const [hasHistory, setHasHistory] = React.useState(false);
   const checkHistory = async () => {
     try {

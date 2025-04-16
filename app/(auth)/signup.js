@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View, Pressable, Alert, TouchableOpacity } from "react-native";
+import { View, Pressable,  TouchableOpacity } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -9,11 +9,9 @@ import { AuthContext } from "../../context/authcontext";
 import { useRouter } from "expo-router";
 import CustomKeyboardView from "../../components/CustomKeybordView";
 import RNText from "../../components/RNText";
-import { Image } from "expo-image";
-import LogoImg from "../../assets/app/logo.png";
 import RNTextInput from "../../components/RNTextInput";
 import Colors from "../../constants/Colors";
-import { Icon, Snackbar, TextInput, useTheme } from "react-native-paper";
+import {  Snackbar, TextInput, useTheme } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
@@ -256,7 +254,7 @@ const {colors} = useTheme();
           padding: 5,
         }}
         onPress={() => {
-          router.back();
+          router.push("/onboarding");
         }}
       >
         <Ionicons name="arrow-back-outline" size={30} color="black" />

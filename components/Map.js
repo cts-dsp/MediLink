@@ -1,7 +1,6 @@
 import { View, StyleSheet, FlatList, Platform } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
-import { mapsStyles } from "../constants/constants";
-import MapView, { Callout, Marker } from "react-native-maps";
+import MapView, {  Marker } from "react-native-maps";
 import {
   heightPercentageToDP,
   widthPercentageToDP,
@@ -23,25 +22,6 @@ const Map = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [places, setPlaces] = useState([]);
 
-  //keep asking for location permission until user allows it
-//   const requestLocationPermission = async () => {
-//     let { status } = await Location.requestForegroundPermissionsAsync();
-//     if (status !== "granted") {
-//       Alert.alert("Permission to access location was denied");
-//       return;
-//     }
-//   };
-
-//   useEffect(() => {
-//     const checkLocationPermission = async () => {
-//       const { status } = await Location.getForegroundPermissionsAsync();
-//       if (status !== "granted") {
-//         await requestLocationPermission();
-//       }
-//     };
-//     checkLocationPermission();
-//   }
-//  , []);
 
 
   useEffect(() => {
@@ -234,7 +214,7 @@ const Map = () => {
           }}
           onPress={() => {
             autoCompleteRef.current.clear();
-            // setLocationType(null);
+            autoCompleteRef.current?.blur();
           }}
         />
       </View>

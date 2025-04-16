@@ -10,9 +10,7 @@ import { blurhash } from "../constants";
 import { useRouter } from "expo-router";
 import { AuthContext } from "../context/authcontext";
 import LogoImg from "../assets/app/logo.png";
-import RNText from "./RNText";
-import { ECO_IMG_URL, POINTS_IMG_URL } from "../constants/constants";
-import { Chip, Switch, useTheme } from "react-native-paper";
+import {  useTheme } from "react-native-paper";
 
 const HomeHeader = () => {
   const { user, toggleTheme } = useContext(AuthContext);

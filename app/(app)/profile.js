@@ -1,11 +1,9 @@
 import {
   View,
-  Pressable,
   Alert,
-  TouchableOpacity,
   ScrollView,
 } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -14,11 +12,8 @@ import {
 import { Image } from "expo-image";
 
 import { blurhash } from "../../constants";
-import CustomKeyboardView from "../../components/CustomKeybordView";
 import { AuthContext } from "../../context/authcontext";
-import ProfileImage from "../../components/ProflieImage";
 import RNText from "../../components/RNText";
-import { saveProfileUrl } from "../../constants/api";
 import { List, useTheme } from "react-native-paper";
 import { router } from "expo-router";
 
@@ -103,7 +98,27 @@ const Profile = () => {
               router.push("updateProfile");
             }}
           />
-  
+
+          <List.Item
+            style={{
+              backgroundColor: colors.card,
+              paddingHorizontal: 16,
+              borderRadius: 8,
+            }}
+            onPress={() => {
+              router.push("emergencyContacts");
+            }}
+            title="Emergency Contacts"
+            titleStyle={{
+              fontFamily: "M-Bold",
+              textTransform: "capitalize",
+            }}
+            description={"Manage your emergency contacts"}
+            descriptionStyle={{
+              fontFamily: "M-Medium",
+            }}
+            left={() => <List.Icon icon="contacts" />}
+          />
           <List.Item
             style={{
               backgroundColor: colors.card,
@@ -130,6 +145,7 @@ const Profile = () => {
               />
             )}
           />
+
           <List.Item
             style={{
               backgroundColor: colors.card,
@@ -165,7 +181,6 @@ const Profile = () => {
           />
         </List.Section>
       </View>
-
     </ScrollView>
   );
 };

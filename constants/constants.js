@@ -1,9 +1,3 @@
-export const ECO_IMG_URL =
-  "https://cdn3d.iconscout.com/3d/premium/thumb/earth-3d-icon-download-in-png-blend-fbx-gltf-file-formats--world-globe-global-ecology-space-pack-science-technology-icons-10896366.png?f=webp";
-export const POINTS_IMG_URL =
-  "https://cdn3d.iconscout.com/3d/premium/thumb/tea-leaf-3d-icon-download-in-png-blend-fbx-gltf-file-formats--leaves-relaxing-pack-food-drink-icons-9466149.png?f=webp";
-
-
 const dailyTips = [
   "💧 Stay hydrated—drink at least 8 glasses of water daily.",
   "😴 Get 7-9 hours of quality sleep every night for better health.",
@@ -46,25 +40,29 @@ export const getDailyTip = (tip) => {
   return dailyTips[tip];
 };
 
-
 export const FIRST_AID_LIST = [
   {
     title: "Stopped Heart",
-    image: "https://www.verywellhealth.com/thmb/EiHS9rCIq-hQJehIKP2Se8ioEDE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-505252032-56d1ec685f9b5879cc81553d.jpg",
+    image:
+      "https://www.verywellhealth.com/thmb/EiHS9rCIq-hQJehIKP2Se8ioEDE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-505252032-56d1ec685f9b5879cc81553d.jpg",
     description:
       "CPR and AEDs are crucial in cardiac arrest situations. Chest compressions and rescue breathing can help recirculate blood until medical help arrives.",
+
     steps: [
       "Call 911 and seek help.",
       "Start chest compressions: push hard and fast in the center of the chest.",
       "Continue until medical help arrives.",
       "Use an AED if available but do not delay chest compressions to look for one.",
     ],
+    youtubeLink: "qvf_74DM880",
   },
   {
     title: "Bleeding",
-    image: "https://www.verywellhealth.com/thmb/S7Pp-oYhwU-A86gseGC41RDFM24=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-525386797-5a6a1eccfa6bcc003690b97f.jpg",
+    image:
+      "https://www.verywellhealth.com/thmb/S7Pp-oYhwU-A86gseGC41RDFM24=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-525386797-5a6a1eccfa6bcc003690b97f.jpg",
     description:
       "Control bleeding by applying direct pressure and keeping the wound elevated. Identifying the type of bleeding (capillary, venous, arterial) helps determine severity.",
+
     steps: [
       "Wear gloves if available.",
       "Rinse the wound with water.",
@@ -72,12 +70,16 @@ export const FIRST_AID_LIST = [
       "Do not remove soaked cloth; add layers instead.",
       "Seek medical help if bleeding is severe or does not stop.",
     ],
+    youtubeLink: "qrbiUlcUZn0",
   },
   {
     title: "Choking",
-    image: "https://www.verywellhealth.com/thmb/OvYCTOPiSh8Kldk3o1yhd475280=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-136811278-664fedac86fc431d84ab156fdfeda4e4.jpg",
+    image:
+      "https://www.verywellhealth.com/thmb/OvYCTOPiSh8Kldk3o1yhd475280=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-136811278-664fedac86fc431d84ab156fdfeda4e4.jpg",
     description:
       "Choking blocks the airway and can be life-threatening. The Heimlich maneuver can help dislodge the object.",
+    youtubeLink: "ClprR0PJco0",
+
     steps: [
       "Ask if the person is choking.",
       "Stand behind them and wrap arms around their waist.",
@@ -88,9 +90,12 @@ export const FIRST_AID_LIST = [
   },
   {
     title: "Burns",
-    image: "https://www.verywellhealth.com/thmb/kkbt6ABHO51uhwxndw_i06VDV7U=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/woman-washing-hands-in-washstand-882017214-5b57492cc9e77c003756d31c.jpg",
+    image:
+      "https://www.verywellhealth.com/thmb/kkbt6ABHO51uhwxndw_i06VDV7U=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/woman-washing-hands-in-washstand-882017214-5b57492cc9e77c003756d31c.jpg",
     description:
       "Burns should be cooled immediately. Their severity is classified as first, second, or third-degree burns.",
+    youtubeLink: "XJGPzl3ENKo",
+
     steps: [
       "Stop the burning process (remove heat, chemicals, or electricity).",
       "Flush the burn with cool running water.",
@@ -101,9 +106,12 @@ export const FIRST_AID_LIST = [
   },
   {
     title: "Blisters",
-    image: "https://www.verywellhealth.com/thmb/lLnelPqIeQFTS_oD39xZ7LpqBBg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cropped-hand-of-man-applying-adhesive-bandage-on-ankle-1187311628-5b58a1be0a874e0586204d6b85ea8c55.jpg",
+    image:
+      "https://www.verywellhealth.com/thmb/lLnelPqIeQFTS_oD39xZ7LpqBBg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cropped-hand-of-man-applying-adhesive-bandage-on-ankle-1187311628-5b58a1be0a874e0586204d6b85ea8c55.jpg",
     description:
       "Blisters protect damaged skin. Some should be left alone, while others need treatment.",
+    youtubeLink: "Vm2TXMNPbn0",
+
     steps: [
       "Do not pop small blisters.",
       "For large blisters, sterilize a needle and drain fluid gently.",
@@ -114,9 +122,12 @@ export const FIRST_AID_LIST = [
   },
   {
     title: "Broken Bones or Fractures",
-    image: "https://www.verywellhealth.com/thmb/FghcEkbxf0Y86pejnhe8JTN7i7Q=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/woman-sitting-with-ice-pack-on-knee-146276242-577c320f3df78cb62c9009cf.jpg",
+    image:
+      "https://www.verywellhealth.com/thmb/FghcEkbxf0Y86pejnhe8JTN7i7Q=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/woman-sitting-with-ice-pack-on-knee-146276242-577c320f3df78cb62c9009cf.jpg",
     description:
       "Broken bones need stabilization. Emergency care is required for severe fractures.",
+    youtubeLink: "pJl3zhBRl9A",
+
     steps: [
       "Call 911 for severe injuries.",
       "Do not move a suspected spinal or severe fracture injury.",
@@ -127,9 +138,12 @@ export const FIRST_AID_LIST = [
   },
   {
     title: "Sprains",
-    image: "https://www.verywellhealth.com/thmb/0iJh87uRaQITu19iMobpp27N1gg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-580815229-56b05b583df78cf772ce6891.jpg",
+    image:
+      "https://www.verywellhealth.com/thmb/0iJh87uRaQITu19iMobpp27N1gg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-580815229-56b05b583df78cf772ce6891.jpg",
     description:
       "Sprains occur when ligaments are overstretched. Treatment focuses on reducing swelling and pain.",
+    youtubeLink: "yrvqNh2q6Tc",
+
     steps: [
       "Rest the injured area.",
       "Apply a cold pack.",
@@ -144,6 +158,8 @@ export const FIRST_AID_LIST = [
       "https://www.verywellhealth.com/thmb/bTKh8ZUdGQNYoG5pQFDTOvbvkhM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-565976469-570285db3df78c7d9e6d8feb.jpg",
     description:
       "Nosebleeds can be caused by trauma, dry air, or medical conditions. Stopping the bleeding promptly is key.",
+    youtubeLink: "opUZX8f0wgA",
+
     steps: [
       "Lean slightly forward (not back).",
       "Pinch just below the bridge of the nose.",
@@ -155,9 +171,12 @@ export const FIRST_AID_LIST = [
   {
     id: 9,
     title: "Frostbite",
-    image: "https://www.verywellhealth.com/thmb/-30zOJlGjv9lPktFu7Zqy26YSWc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-912082062-5c021fc446e0fb0001febdff.jpg",
+    image:
+      "https://www.verywellhealth.com/thmb/-30zOJlGjv9lPktFu7Zqy26YSWc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-912082062-5c021fc446e0fb0001febdff.jpg",
     description:
       "Frostbite happens when the body's tissues freeze deeply in the cold. This is the opposite of a burn, but the damage it does to your skin is almost the same.",
+    youtubeLink: "e3eimijVeLw",
+
     steps: [
       "Get out of the cold.",
       "Put the affected area in warm water (98 to 105 degrees) for 20 to 30 minutes.",
@@ -185,6 +204,8 @@ export const FIRST_AID_LIST = [
       "Itching",
       "Signs of anaphylaxis (hives, swelling, chest pain, confusion, sweating, blue lips and nails, trouble breathing)",
     ],
+    youtubeLink: "i9nzD1BG2o0",
+
     steps: [
       "Call 911 immediately or get the person to the hospital if they have signs of an allergic reaction.",
       "If the person has a known allergy to bee stings, use an EpiPen to prevent anaphylaxis.",

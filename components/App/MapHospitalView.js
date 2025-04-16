@@ -1,12 +1,11 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View,  TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
 import RNText from "../RNText";
 import {
-  heightPercentageToDP,
   widthPercentageToDP,
 } from "react-native-responsive-screen";
-import { AntDesign, Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
-import { Divider, useTheme } from "react-native-paper";
+import { AntDesign,  Ionicons } from "@expo/vector-icons";
+import {  useTheme } from "react-native-paper";
 import { Image } from "expo-image";
 import { AuthContext } from "../../context/authcontext";
 

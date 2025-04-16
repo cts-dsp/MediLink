@@ -23,6 +23,7 @@ const ChatScreen = () => {
   useEffect(() => {
     loadChatHistory();
   }, []);
+console.log("messages", messages.length);
 
   // Function to load chat history
   const loadChatHistory = async () => {
@@ -30,7 +31,10 @@ const ChatScreen = () => {
       const savedMessages = await AsyncStorage.getItem("chatHistory");
       if (savedMessages) {
         const parsedMessages = JSON.parse(savedMessages);
-        setMessages(parsedMessages.reverse());
+        setTimeout(() => {
+          setMessages(parsedMessages);
+        }
+        , 10); // Delay to simulate loading
       }
     } catch (error) {
       console.error("Failed to load chat history", error);
@@ -111,30 +115,30 @@ const ChatScreen = () => {
           {...props}
           wrapperStyle={{
             right: {
-              backgroundColor: colors.green,
+              backgroundColor: "#47c9bb",
               borderWidth: 1.5,
             },
             left: {
-              backgroundColor: colors.yellow,
+              backgroundColor: "#1f8bcc",
               borderWidth: 1.5,
             },
           }}
           textStyle={{
             right: {
-              color: "#000",
+              color: "#fff",
               fontFamily: "M-Bold",
             },
             left: {
-              color: "#000",
+              color: "#fff",
               fontFamily: "M-Bold",
             },
           }}
           timeTextStyle={{
             right: {
-              color: "#000",
+              color: "#fff",
             },
             left: {
-              color: "#000",
+              color: "#fff",
             },
           }}
         />

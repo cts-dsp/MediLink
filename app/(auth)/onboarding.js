@@ -1,13 +1,12 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
   widthPercentageToDP,
 } from "react-native-responsive-screen";
 import { useRouter } from "expo-router";
-import Colors from "../../constants/Colors";
-import { Button, useTheme } from "react-native-paper";
+import {  useTheme } from "react-native-paper";
 import RNText from "../../components/RNText";
 import { Image } from "react-native";
 import LogoImg from "../../assets/app/logo.png";
@@ -100,7 +99,7 @@ const Onboarding = () => {
               marginTop: hp("1%"),
               width: wp("80%"),
               height: hp("7%"),
-              backgroundColor: colors.background,
+              backgroundColor: colors.card,
               borderRadius: 30,
               padding: 7,
               shadowColor: "#000",

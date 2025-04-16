@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import {
   View,
-  Button,
-  Alert,
   Pressable,
   ScrollView,
   TouchableOpacity,
@@ -11,8 +9,6 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { SvgXml } from "react-native-svg";
-import loginImg from "../../assets/svg/login";
 import Loading from "../../components/Loading";
 import { AuthContext } from "../../context/authcontext";
 import { useRouter } from "expo-router";

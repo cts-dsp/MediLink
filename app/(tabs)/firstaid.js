@@ -71,6 +71,7 @@ const Challenges = () => {
                     description: action.description,
                     image: action.image,
                     steps: action.steps,
+                    youtubeLink: action.youtubeLink,
                   },
                 });
               }}

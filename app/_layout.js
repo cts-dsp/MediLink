@@ -103,10 +103,6 @@ const RootLayout = () => {
     "M-Thin": require("../assets/fonts/Montserrat/Montserrat-Thin.ttf"),
     "M-Black": require("../assets/fonts/Montserrat/Montserrat-Black.ttf"),
   });
-  // const colorScheme = "light" // Detect system theme
-  // const [theme, setTheme] = useState(
-  //   colorScheme === "dark" ? darkTheme : lightTheme
-  // );
 
   if (!fontsLoaded && !fontError) {
     return null;

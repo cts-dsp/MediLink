@@ -57,7 +57,7 @@ const heartRateHourlyData = fullHeartRateData.slice(0, currentHour + 1);
       : monthlyStats?.restingHR?.map((hr, index) => ({
           value: hr,
           label:
-            monthlyStats.stepsData[index]?.dateTime.slice(5, 7) ||
+            monthlyStats.stepsData[index]?.dateTime.slice(8, 10) ||
             `M${index + 1}`,
         })) || [];
 

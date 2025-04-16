@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View, Pressable, Alert, TouchableOpacity } from "react-native";
+import { View, Pressable, TouchableOpacity } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
