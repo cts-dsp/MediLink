@@ -10,7 +10,8 @@ import { blurhash } from "../constants";
 import { useRouter } from "expo-router";
 import { AuthContext } from "../context/authcontext";
 import LogoImg from "../assets/app/logo.png";
-import {  useTheme } from "react-native-paper";
+import { useTheme } from "react-native-paper";
+import RNText from "./RNText";
 
 const HomeHeader = () => {
   const { user, toggleTheme } = useContext(AuthContext);
@@ -33,7 +34,18 @@ const HomeHeader = () => {
       }}
     >
       <TouchableOpacity onPress={() => router.push("/home")}>
-        <Image source={LogoImg} style={{ height: hp(7), aspectRatio: 1 }} />
+        <RNText
+          font={"M-Bold"}
+          style={{
+            color: colors.primary,
+            fontSize: 22,
+            letterSpacing: .5,
+            textAlign: "center",
+            marginLeft: 10,
+          }}
+        >
+          MediLink
+        </RNText>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={onToggleSwitch}
@@ -46,15 +58,14 @@ const HomeHeader = () => {
       >
         {isSwitchOn ? (
           <Image
-          source={"https://cdn-icons-png.flaticon.com/128/4489/4489231.png"}
-          style={{ height: hp(3.5), aspectRatio: 1, marginLeft: 5 }}
-        />
+            source={"https://cdn-icons-png.flaticon.com/128/4489/4489231.png"}
+            style={{ height: hp(3.5), aspectRatio: 1, marginLeft: 5 }}
+          />
         ) : (
-        
           <Image
-          source={"https://cdn-icons-png.flaticon.com/128/10562/10562510.png"}
-          style={{ height: hp(4), aspectRatio: 1, marginLeft: 5 }}
-        />
+            source={"https://cdn-icons-png.flaticon.com/128/10562/10562510.png"}
+            style={{ height: hp(4), aspectRatio: 1, marginLeft: 5 }}
+          />
         )}
       </TouchableOpacity>
       <Pressable

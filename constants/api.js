@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../firebase";
+import { db, GEMINAI_API_KEY } from "../firebase";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export const saveProfileUrl = async (id, url) => {
@@ -118,8 +118,7 @@ const fetchSleepLast30Days = async () => {
 // fetchSleepLast30Days().then((data) => console.log("Last 30 Days Sleep:", data));
 
 // Replace with your actual Gemini API key
-const API_KEY = "AIzaSyATmXR9fQQz7euoaznxrd9N_QDmKTxINcI";
-const genAI = new GoogleGenerativeAI(API_KEY);
+const genAI = new GoogleGenerativeAI(GEMINAI_API_KEY);
 
 // The actual function to call Gemini
 export const getHealthInsightsFromGemini = async (userData) => {

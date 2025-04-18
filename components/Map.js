@@ -12,7 +12,12 @@ import { ActivityIndicator, useTheme } from "react-native-paper";
 import MapHospitalView from "./App/MapHospitalView";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AntDesign } from "@expo/vector-icons";
+import { API_KEY } from "../firebase";
+
+
 const ios = Platform.OS === "ios";
+
+
 
 const Map = () => {
   const { colors } = useTheme();
@@ -37,12 +42,14 @@ const Map = () => {
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
       });
-      const api = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coords.latitude},${location.coords.longitude}&key=AIzaSyDyPF5v_WDDBiREloE7sPxvQzA7HNv3BOY`;
+      const api = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coords.latitude},${location.coords.longitude}&key=${API_KEY}`;
 
       const res = await fetch(api);
       const data = await res.json();
 
       fetchNearbyPlaces(location.coords.latitude, location.coords.longitude);
+      console.log("Called API", data);
+      
 
       setCurrentAddress(data?.results[0].formatted_address);
     })();
@@ -51,7 +58,6 @@ const Map = () => {
 
   const fetchNearbyPlaces = async (lat, lng) => {
     setIsLoading(true);
-    const API_KEY = "AIzaSyDyPF5v_WDDBiREloE7sPxvQzA7HNv3BOY";
     const url = "https://places.googleapis.com/v1/places:searchNearby";
 
     const requestBody = {
@@ -198,7 +204,7 @@ const Map = () => {
             }
           }}
           query={{
-            key: "AIzaSyDyPF5v_WDDBiREloE7sPxvQzA7HNv3BOY",
+            key: API_KEY,
             language: "en",
           }}
         />

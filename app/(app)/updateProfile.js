@@ -4,7 +4,6 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Image } from "expo-image";
 
 import { blurhash } from "../../constants";
@@ -20,7 +19,6 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import Loading from "../../components/Loading";
 
 const UpdateProfile = () => {
-  const { top } = useSafeAreaInsets();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 

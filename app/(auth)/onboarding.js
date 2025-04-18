@@ -19,7 +19,7 @@ const Onboarding = () => {
   return (
     <View
       style={{
-        backgroundColor: colors.background,
+        backgroundColor: "#2ea28b",
         flex: 1,
         justifyContent: "center",
       }}
@@ -42,16 +42,16 @@ const Onboarding = () => {
         >
           <RNText
             font={"M-Bold"}
-            style={{ color: colors.green, fontSize: 24, textAlign: "center" }}
+            style={{ color: colors.white, fontSize: 42, textAlign: "center" }}
           >
             MediLink
           </RNText>
 
           <RNText
             font={"M-Medium"}
-            style={{ color: colors.text, fontSize: 18, textAlign: "center" }}
+            style={{ color: colors.white, fontSize: 18, textAlign: "center" }}
           >
-            Linking to the care you need
+            Community Health Healper Application
           </RNText>
         </View>
         <View style={{
@@ -68,7 +68,7 @@ const Onboarding = () => {
               marginTop: hp("5%"),
               width: wp("80%"),
               height: hp("7%"),
-              backgroundColor: colors.green,
+              backgroundColor: colors.blue,
               borderRadius: 30,
               padding: 7,
               shadowColor: "#000",
@@ -99,10 +99,10 @@ const Onboarding = () => {
               marginTop: hp("1%"),
               width: wp("80%"),
               height: hp("7%"),
-              backgroundColor: colors.card,
+              backgroundColor: colors.white,
               borderRadius: 30,
               padding: 7,
-              shadowColor: "#000",
+              shadowColor: "#fff",
               shadowOffset: {
                 width: 0,
                 height: 2,
@@ -117,7 +117,7 @@ const Onboarding = () => {
               font={"M-Bold"}
               style={{
                 fontSize: hp(2.2),
-                color: colors.text,
+                color: colors.black,
                 textAlign: "center",
                 padding: 7,
               }}

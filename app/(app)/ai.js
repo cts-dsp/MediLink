@@ -10,9 +10,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useTheme } from "react-native-paper";
 import { MaterialIcons } from "@expo/vector-icons";
+import { GEMINAI_API_KEY } from "../../firebase";
 
 // Initialize Google Generative AI
-const genAI = new GoogleGenerativeAI("AIzaSyATmXR9fQQz7euoaznxrd9N_QDmKTxINcI");
+const genAI = new GoogleGenerativeAI(GEMINAI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
 const ChatScreen = () => {

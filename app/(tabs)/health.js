@@ -508,8 +508,6 @@ const Health = () => {
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const askAI = async () => {
-    console.log("LOadingggg");
-
     setModalLoading(true);
     const data = await getHealthInsightsFromGemini(dailyStats);
     setAIData(data);

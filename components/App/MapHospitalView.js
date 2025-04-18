@@ -8,6 +8,7 @@ import { AntDesign,  Ionicons } from "@expo/vector-icons";
 import {  useTheme } from "react-native-paper";
 import { Image } from "expo-image";
 import { AuthContext } from "../../context/authcontext";
+import { API_KEY } from "../../firebase";
 
 const MapHospitalView = ({ place, index, handleInfoClick }) => {
   const { colors } = useTheme();
@@ -35,7 +36,7 @@ const MapHospitalView = ({ place, index, handleInfoClick }) => {
   const isOpen = currentOpeningHours?.openNow ? "Open Now" : "Closed Now";
   const isOpenColor = currentOpeningHours?.openNow ? colors.green : colors.red;
   const imageUrl = photoName
-    ? `https://places.googleapis.com/v1/${photoName}/media?maxWidthPx=400&key=${"AIzaSyDyPF5v_WDDBiREloE7sPxvQzA7HNv3BOY"}`
+    ? `https://places.googleapis.com/v1/${photoName}/media?maxWidthPx=400&key=${API_KEY}`
     : "https://www.hospertz.com/wp-content/uploads/2024/06/hospital-building-001-global.webp"; // Fallback Ima
 
   return (
