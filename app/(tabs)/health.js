@@ -43,7 +43,14 @@ const config = {
 //   // return `${scheme}:/redirect`;
 //   return "medilink://oauthredirect";
 // };
-const redirectUri = Linking.createURL("oauthredirect");
+// const redirectUri = ;
+const redirectUri = AuthSession.makeRedirectUri({
+  path: "/oauthredirect",
+  native: "medilink://oauthredirect",
+  useProxy: false, // since we're using a custom scheme for production
+});
+
+console.log("Redirect URI:", redirectUri);
 
 const Health = () => {
   const { colors } = useTheme();
@@ -83,14 +90,7 @@ const Health = () => {
   });
   const [error, setError] = useState(null);
   const [range, setRange] = useState("daily");
-  console.log(
-    "Range selected:",
-    range,
-    "Daily Stats:",
-    dailyStats,
-    "weeklyStats:",
-    weeklyStats
-  );
+
 
   const clearToken = async () => {
     try {
@@ -513,7 +513,6 @@ const Health = () => {
     setAIData(data);
     setModalLoading(false);
   };
-
 
   const containerStyle = { backgroundColor: "#18191F", padding: 8 };
   return (

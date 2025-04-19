@@ -2,8 +2,8 @@
   "expo": {
     "scheme": "medilink",
     "platforms": ["ios", "android"],
-    "name": "medi-link",
-    "slug": "medi-link",
+    "name": "medilink",
+    "slug": "medilink",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
